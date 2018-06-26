@@ -1,0 +1,13 @@
+! These parameters are missing from the common MOM_input parameters
+SCM_TEMP_MLD = 100.
+SCM_SALT_MLD = 100.
+!SCM_L2_SALT = 37.0
+SCM_L2_DTDZ = -0.01
+SCM_L2_DSDZ = -0.01
+BUOY_CONFIG = zero
+WIND_CONFIG = zero
+GUST_CONST = 0.0
+! double diffusion
+#override USE_CVMIX_DDIFF = True
+#override TRACER_TRIDIAG = True
+#override USE_LEGACY_DIABATIC_DRIVER = False
