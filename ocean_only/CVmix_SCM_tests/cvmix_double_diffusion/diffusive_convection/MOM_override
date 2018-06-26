@@ -9,4 +9,5 @@ WIND_CONFIG = zero
 GUST_CONST = 0.0
 ! double diffusion
 #override USE_CVMIX_DDIFF = True
-#override USE_KPP = True
+#override TRACER_TRIDIAG = True
+#override USE_LEGACY_DIABATIC_DRIVER = False

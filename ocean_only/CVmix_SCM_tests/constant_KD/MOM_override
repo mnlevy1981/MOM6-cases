@@ -1,0 +1,13 @@
+! These parameters are missing from the common MOM_input parameters
+SCM_TEMP_MLD = 200.
+SCM_L1_TEMP = 1.0
+SCM_L2_TEMP = 0.0
+BUOY_CONFIG = zero
+WIND_CONFIG = zero
+GUST_CONST = 0.0
+! constant vertical diffusion
+#override KD = 1.0E-4
+! use new diabatic_driver
+USE_LEGACY_DIABATIC_DRIVER = False
+#override USE_LEGACY_DIABATIC_DRIVER = False
+

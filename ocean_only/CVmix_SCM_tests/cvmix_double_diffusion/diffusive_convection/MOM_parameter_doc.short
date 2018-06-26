@@ -3,6 +3,9 @@
 ! === module MOM ===
 SPLIT = False                   !   [Boolean] default = True
                                 ! Use the split time stepping if true.
+USE_LEGACY_DIABATIC_DRIVER = False !   [Boolean] default = True
+                                ! If true, use the a legacy version of the diabatic subroutine.
+                                ! This is temporary and is needed avoid change in answers.
 USE_REGRIDDING = True           !   [Boolean] default = False
                                 ! If True, use the ALE algorithm (regridding/remapping).
                                 ! If False, use the layered isopycnal algorithm.
@@ -198,7 +201,7 @@ THICKNESS_CONFIG = "coord"      !
                                 !     soliton - Equatorial Rossby soliton.
                                 !     rossby_front - a mixed layer front in thermal wind balance.
                                 !     USER - call a user modified routine.
-TS_CONFIG = "SCM_CVmix_tests"   !
+TS_CONFIG = "SCM_CVMix_tests"   !
                                 ! A string that determines how the initial tempertures
                                 ! and salinities are specified for a new run:
                                 !     file - read velocities from the file specified
@@ -217,7 +220,7 @@ TS_CONFIG = "SCM_CVmix_tests"   !
                                 !     dumbbell - sloshing channel ICs.
                                 !     rossby_front - a mixed layer front in thermal wind balance.
                                 !     SCM_ideal_hurr - used in the SCM idealized hurricane test.
-                                !     SCM_CVmix_tests - used in the SCM CVmix tests.
+                                !     SCM_CVMix_tests - used in the SCM CVMix tests.
                                 !     USER - call a user modified routine.
 SCM_TEMP_MLD = 100.0            !   [m] default = 0.0
                                 ! Initial temp mixed layer depth
@@ -304,16 +307,6 @@ BIHARMONIC = False              !   [Boolean] default = True
                                 ! BIHARMONIC may be used with LAPLACIAN.
 
 ! === module MOM_vert_friction ===
-U_TRUNC_FILE = "U_velocity_truncations" ! default = ""
-                                ! The absolute path to a file into which the accelerations
-                                ! leading to zonal velocity truncations are written.
-                                ! Undefine this for efficiency if this diagnostic is not
-                                ! needed.
-V_TRUNC_FILE = "V_velocity_truncations" ! default = ""
-                                ! The absolute path to a file into which the accelerations
-                                ! leading to meridional velocity truncations are written.
-                                ! Undefine this for efficiency if this diagnostic is not
-                                ! needed.
 HARMONIC_VISC = True            !   [Boolean] default = False
                                 ! If true, use the harmonic mean thicknesses for
                                 ! calculating the vertical viscosity.
@@ -335,12 +328,14 @@ MAXVEL = 6.0                    !   [m s-1] default = 3.0E+08
 
 ! === module MOM_diabatic_driver ===
 ! The following parameters are used for diabatic processes.
+TRACER_TRIDIAG = True           !   [Boolean] default = False
+                                ! If true, use the passive tracer tridiagonal solver for T and S
 
 ! === module MOM_KPP ===
-! This is the MOM wrapper to CVmix:KPP
-! See http://code.google.com/p/cvmix/
+! This is the MOM wrapper to CVMix:KPP
+! See http://cvmix.github.io/
 USE_KPP = True                  !   [Boolean] default = False
-                                ! If true, turns on the [CVmix] KPP scheme of Large et al., 1994,
+                                ! If true, turns on the [CVMix] KPP scheme of Large et al., 1994,
                                 ! to calculate diffusivities and non-local transport in the OBL.
 KPP%
 %KPP
@@ -348,7 +343,7 @@ KPP%
 ! === module MOM_tidal_mixing ===
 ! Vertical Tidal Mixing Parameterization
 
-! === module MOM_cvmix_conv ===
+! === module MOM_CVMix_conv ===
 ! Parameterization of enhanced mixing due to convection via CVMix
 
 ! === module MOM_entrain_diffusive ===
@@ -370,7 +365,7 @@ KD = 0.0                        !   [m2 s-1]
 ! === module MOM_kappa_shear ===
 ! Parameterization of shear-driven turbulence following Jackson, Hallberg and Legg, JPO 2008
 
-! === module MOM_cvmix_shear ===
+! === module MOM_CVMix_shear ===
 ! Parameterization of shear-driven turbulence via CVMix (various options)
 
 ! === module MOM_CVMix_ddiff ===
