@@ -1,8 +1,4 @@
-/* WARNING: DO NOT EDIT the MOM_input file inside the run directory. Otherwise, your
-   changes will be overriden! Instead, apply your changes via CIME: Use the SourceMods
-	 mechanism or list your parameter changes in user_nl_mom file.
-
-   This input file provides the adjustable run-time parameters for version 6 of
+/* This input file provides the adjustable run-time parameters for version 6 of
    the Modular Ocean Model (MOM6), a numerical ocean model developed at NOAA-GFDL.
    Where appropriate, parameters use usually given in MKS units.
 
