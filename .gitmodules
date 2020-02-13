@@ -1,7 +1,7 @@
 [submodule "src/MOM6"]
 	path = src/MOM6
-	url = https://github.com/NCAR/MOM6.git
-	branch = dev/ncar
+	url = git@github.com:mnlevy1981/MOM6.git
+	branch = mnlevy1981/add_MARBL
 [submodule "src/FMS"]
 	path = src/FMS
 	url = https://github.com/NOAA-GFDL/FMS.git
